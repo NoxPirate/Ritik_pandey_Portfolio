@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruturaj Bhaskar Nawale - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="header-transparent shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/index.html" class="text-xl font-bold text-white" data-aos="fade-down">Ruturaj Nawale | Data
+                Science + Salesforce Innovator</a>
+            <div class="hidden md:flex space-x-6 items-center" data-aos="fade-down" data-aos-delay="200">
+                <a href="#projects" class="text-gray-200 hover:text-indigo-400 transition duration-300">Projects</a>
+                <a href="#skills" class="text-gray-200 hover:text-indigo-400 transition duration-300">Skills</a>
+                <a href="#experiences"
+                    class="text-gray-200 hover:text-indigo-400 transition duration-300">Experiences</a>
+                <a href="#publications"
+                    class="text-gray-200 hover:text-indigo-400 transition duration-300">Publications</a>
+                <a href="#contact" class="text-gray-200 hover:text-indigo-400 transition duration-300">Get in touch</a>
+                <a href="https://www.linkedin.com/in/ruturaj-nawale-863418288" target="_blank"
+                    class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-300">
+                    CONNECT ON LINKEDIN
+                </a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-200 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 bg-opacity-90 shadow-md" data-aos="fade-down">
+            <a href="#projects" class="block py-2 px-6 text-gray-200 hover:bg-gray-700">Projects</a>
+            <a href="#skills" class="block py-2 px-6 text-gray-200 hover:bg-gray-700">Skills</a>
+            <a href="#experiences" class="block py-2 px-6 text-gray-200 hover:bg-gray-700">Experiences</a>
+            <a href="#publications" class="block py-2 px-6 text-gray-200 hover:bg-gray-700">Publications</a>
+            <a href="#contact" class="block py-2 px-6 text-gray-200 hover:bg-gray-700">Get in touch</a>
+            <a href="https://www.linkedin.com/in/ruturaj-nawale-863418288" target="_blank"
+                class="block py-2 px-6 text-white bg-indigo-600 hover:bg-indigo-700 transition duration-300">CONNECT ON
+                LINKEDIN</a>
+        </div>
+    </header>
+
+    <section id="hero" class="relative py-20 md:py-0 md:h-screen flex items-center overflow-hidden">
+        <!-- New Animated Gradient Background -->
+        <div class="absolute inset-0 bg-black bg-opacity-80"></div>
+        <div class="absolute inset-0 hero-gradient-overlay opacity-30"></div>
+
+        <!-- Decorative Blobs -->
+        <div
+            class="absolute top-20 left-10 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob">
+        </div>
+        <div
+            class="absolute top-20 right-10 w-72 h-72 bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute bottom-20 left-20 w-72 h-72 bg-pink-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000">
+        </div>
+
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="md:order-1 order-2" data-aos="fade-up">
+                <div class="glass-panel-hero p-8 rounded-2xl">
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-white mb-4">
+                        Ruturaj Nawale <br>
+                        <span id="changing-text"
+                            class="text-gradient-premium block mt-2 transition-all duration-500 ease-in-out">here to
+                            build and
+                            create.</span>
+                    </h1>
+                    <p class="mt-6 text-lg md:text-xl text-gray-200 leading-relaxed">
+                        Aspiring Data Scientist and Machine Learning Engineer. <br>
+                        <span class="text-indigo-300 font-medium">Turning Data into Decisions.</span>
+                    </p>
+
+                    <div class="mt-8 flex flex-wrap items-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                        <a href="#projects"
+                            class="btn-glow-primary bg-indigo-600 text-white px-8 py-3 rounded-full font-bold tracking-wide hover:bg-indigo-700">
+                            VIEW PROJECTS
+                        </a>
+                        <a href="#about"
+                            class="btn-glass-secondary text-white px-8 py-3 rounded-full font-medium hover:text-white">
+                            ABOUT ME
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Floating Skill Icons -->
+                <div class="mt-12 flex justify-center md:justify-start space-x-8" data-aos="fade-up"
+                    data-aos-delay="400">
+                    <div class="floating-icon flex flex-col items-center group cursor-pointer">
+                        <div
+                            class="p-3 bg-white bg-opacity-10 rounded-xl backdrop-blur-sm group-hover:bg-opacity-20 transition">
+                            <img src="/src/science-report.png" alt="Data Science" class="h-10 w-10">
+                        </div>
+                        <span
+                            class="mt-2 text-xs text-indigo-300 opacity-0 group-hover:opacity-100 transition duration-300 absolute -bottom-6">Data
+                            Science</span>
+                    </div>
+                    <div class="floating-icon flex flex-col items-center group cursor-pointer">
+                        <div
+                            class="p-3 bg-white bg-opacity-10 rounded-xl backdrop-blur-sm group-hover:bg-opacity-20 transition">
+                            <img src="/src/salesforce.png" alt="Salesforce" class="h-10 w-10">
+                        </div>
+                        <span
+                            class="mt-2 text-xs text-indigo-300 opacity-0 group-hover:opacity-100 transition duration-300 absolute -bottom-6">Salesforce</span>
+                    </div>
+                    <div class="floating-icon flex flex-col items-center group cursor-pointer">
+                        <div
+                            class="p-3 bg-white bg-opacity-10 rounded-xl backdrop-blur-sm group-hover:bg-opacity-20 transition">
+                            <img src="/src/coding.png" alt="Web Dev" class="h-10 w-10">
+                        </div>
+                        <span
+                            class="mt-2 text-xs text-indigo-300 opacity-0 group-hover:opacity-100 transition duration-300 absolute -bottom-6">Web
+                            Dev</span>
+                    </div>
+                    <div class="floating-icon flex flex-col items-center group cursor-pointer">
+                        <div
+                            class="p-3 bg-white bg-opacity-10 rounded-xl backdrop-blur-sm group-hover:bg-opacity-20 transition">
+                            <img src="/src/app-development.png" alt="ML" class="h-10 w-10">
+                        </div>
+                        <span
+                            class="mt-2 text-xs text-indigo-300 opacity-0 group-hover:opacity-100 transition duration-300 absolute -bottom-6">ML</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:order-2 order-1 flex justify-center md:justify-end relative" data-aos="zoom-in"
+                data-aos-delay="300">
+                <div class="profile-img-glow">
+                    <img class="w-full max-w-sm md:max-w-md object-cover rounded-xl shadow-2xl relative z-10 border border-gray-700"
+                        src="/src/ruturajNawale.jpg" alt="Ruturaj Nawale">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="py-20 md:py-32 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div
+            class="absolute top-1/2 left-0 w-64 h-64 bg-indigo-900 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-80 h-80 bg-purple-900 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-2000">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+
+                <!-- Left Column: Visual Profile Card -->
+                <div class="md:w-5/12 w-full flex justify-center" data-aos="fade-right">
+                    <div
+                        class="profile-card-container w-72 h-auto md:w-80 relative transform rotate-3 hover:rotate-0 transition duration-500">
+                        <div class="profile-card-inner p-1">
+                            <img class="w-full h-auto rounded-2xl object-cover" src="/src/ruturajNawale.jpg"
+                                alt="Ruturaj Nawale Profile">
+
+                            <!-- Floating Status Badge -->
+                            <div
+                                class="absolute bottom-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full flex items-center gap-2 shadow-xl">
+                                <span class="relative flex h-3 w-3">
+                                    <span
+                                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                                </span>
+                                <span class="text-xs font-semibold text-white tracking-wide">OPEN TO WORK</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: The Story & Stats -->
+                <div class="md:w-7/12 w-full" data-aos="fade-left">
+                    <h2
+                        class="text-3xl md:text-5xl font-extrabold mb-8 section-title-gradient inline-block border-b-4 border-indigo-500 pb-2">
+                        About Me
+                    </h2>
+
+                    <div class="glass-card-clean p-8 mb-8 shadow-2xl">
+                        <p class="text-lg text-gray-100 leading-relaxed font-medium">
+                            Aspiring <b class="text-indigo-400 font-bold">Data Scientist</b> and Machine Learning
+                            enthusiast pursuing a Bachelor’s in Computer Science.
+                            Skilled in <b class="text-white font-bold">Python, SQL, Machine Learning,</b> and <b
+                                class="text-white font-bold">Data Analytics</b>, with hands-on experience
+                            building predictive models and interactive dashboards.
+                        </p>
+                        <p class="text-lg text-gray-100 leading-relaxed font-medium mt-4">
+                            I have built full-stack applications using <b class="text-purple-400 font-bold">React
+                                Native & Tailwind CSS</b>.
+                            Also experienced in <b class="text-blue-400 font-bold">Salesforce Administration</b>,
+                            specializing in workflow automation.
+                        </p>
+                    </div>
+
+                    <!-- Highlight Pills Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div
+                            class="info-pill p-4 flex flex-col items-center justify-center text-center cursor-pointer group">
+                            <div class="text-2xl mb-1 group-hover:scale-110 transition">🎓</div>
+                            <span class="text-xs text-gray-400 uppercase tracking-widest font-semibold">Education</span>
+                            <span class="text-sm text-white font-medium mt-1">B.Sc. Comp Sci</span>
+                            <span class="text-xs text-indigo-400 mt-1">GPA: 9.40</span>
+                        </div>
+
+                        <div
+                            class="info-pill p-4 flex flex-col items-center justify-center text-center cursor-pointer group">
+                            <div class="text-2xl mb-1 group-hover:scale-110 transition">📍</div>
+                            <span class="text-xs text-gray-400 uppercase tracking-widest font-semibold">Location</span>
+                            <span class="text-sm text-white font-medium mt-1">Navi Mumbai</span>
+                            <span class="text-xs text-indigo-400 mt-1">India</span>
+                        </div>
+
+                        <div
+                            class="info-pill p-4 flex flex-col items-center justify-center text-center cursor-pointer group col-span-2 md:col-span-1">
+                            <div class="text-2xl mb-1 group-hover:scale-110 transition">🚀</div>
+                            <span class="text-xs text-gray-400 uppercase tracking-widest font-semibold">Focus</span>
+                            <span class="text-sm text-white font-medium mt-1">AI & Data Science</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <a href="https://www.linkedin.com/in/ruturaj-nawale-863418288" target="_blank"
+                            class="inline-flex items-center gap-2 text-indigo-400 hover:text-white font-medium transition duration-300 group">
+                            <span>Connect on LinkedIn</span>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 transform group-hover:translate-x-1 transition" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiences" class="py-20 md:py-32 relative">
+        <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-20 text-center" data-aos="fade-down">
+                <span class="section-title-gradient border-b-4 border-indigo-500 pb-2">Experience & Education</span>
+            </h2>
+
+            <div class="timeline-premium relative max-w-5xl mx-auto space-y-12">
+
+                <!-- 1. Salesforce Admin (WORK) - LEFT -->
+                <div class="flex flex-col md:flex-row items-center justify-between w-full relative">
+                    <div class="w-full md:w-5/12 timeline-content-left md:text-right order-2 md:order-1"
+                        data-aos="fade-right">
+                        <div class="glass-card-work p-6 rounded-xl relative">
+                            <h3 class="text-xl font-bold text-white">Salesforce Administrator</h3>
+                            <p class="text-indigo-400 font-medium mb-1">GSBG Technologies</p>
+                            <span class="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded inline-block mb-3">July
+                                2025 - Present</span>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Designed complex Salesforce Flows for automation. Developed custom Lightning Pages to
+                                enhance user experience and data accessibility.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- ICON -->
+                    <div class="timeline-icon-container icon-work order-1 md:order-2 mb-4 md:mb-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="w-full md:w-5/12 order-3"></div>
+                </div>
+
+                <!-- 2. Web Developer (WORK) - RIGHT -->
+                <div class="flex flex-col md:flex-row items-center justify-between w-full relative">
+                    <div class="w-full md:w-5/12 order-2 md:order-1"></div>
+                    <!-- ICON -->
+                    <div class="timeline-icon-container icon-work order-1 md:order-2 mb-4 md:mb-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                    <div class="w-full md:w-5/12 timeline-content-right order-2 md:order-3" data-aos="fade-left">
+                        <div class="glass-card-work p-6 rounded-xl relative">
+                            <h3 class="text-xl font-bold text-white">Web Developer</h3>
+                            <p class="text-indigo-400 font-medium mb-1">ReaEspresso Proptech Pvt. Ltd</p>
+                            <span class="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded inline-block mb-3">April
+                                2025 - May 2025</span>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Contributed to web page development and optimization. Worked in an agile environment,
+                                demonstrating effective task execution.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Billing Survey (WORK) - LEFT -->
+                <div class="flex flex-col md:flex-row items-center justify-between w-full relative">
+                    <div class="w-full md:w-5/12 timeline-content-left md:text-right order-2 md:order-1"
+                        data-aos="fade-right">
+                        <div class="glass-card-work p-6 rounded-xl relative">
+                            <h3 class="text-xl font-bold text-white">Billing Software Survey Project</h3>
+                            <p class="text-indigo-400 font-medium mb-1">Reva Technologies</p>
+                            <span class="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded inline-block mb-3">August
+                                2024 - Sept 2024</span>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Completed a comprehensive survey project. Demonstrated strong analytical skills and
+                                self-motivation.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- ICON -->
+                    <div class="timeline-icon-container icon-work order-1 md:order-2 mb-4 md:mb-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                        </svg>
+                    </div>
+                    <div class="w-full md:w-5/12 order-3"></div>
+                </div>
+
+                <!-- 4. Bachelor's (EDU) - RIGHT -->
+                <div class="flex flex-col md:flex-row items-center justify-between w-full relative">
+                    <div class="w-full md:w-5/12 order-2 md:order-1"></div>
+                    <!-- ICON -->
+                    <div class="timeline-icon-container icon-edu order-1 md:order-2 mb-4 md:mb-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path
+                                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                        </svg>
+                    </div>
+                    <div class="w-full md:w-5/12 timeline-content-right order-2 md:order-3" data-aos="fade-left">
+                        <div class="glass-card-edu p-6 rounded-xl relative">
+                            <h3 class="text-xl font-bold text-white">Bachelor's in Computer Science</h3>
+                            <p class="text-teal-400 font-medium mb-1">University Of Mumbai</p>
+                            <span class="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded inline-block mb-3">June
+                                2023 - July 2026</span>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Specializing in Data Science & Analytics. <br>
+                                <span class="font-semibold text-teal-300">SGPA: 9.40</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. HSC (EDU) - LEFT -->
+                <div class="flex flex-col md:flex-row items-center justify-between w-full relative">
+                    <div class="w-full md:w-5/12 timeline-content-left md:text-right order-2 md:order-1"
+                        data-aos="fade-right">
+                        <div class="glass-card-edu p-6 rounded-xl relative">
+                            <h3 class="text-xl font-bold text-white">Higher Secondary Education</h3>
+                            <p class="text-teal-400 font-medium mb-1">12th Science</p>
+                            <span class="text-xs text-gray-400 bg-gray-800 px-2 py-1 rounded inline-block mb-3">March
+                                2023</span>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Completed Science stream with <span class="font-semibold text-teal-300">73%</span>.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- ICON -->
+                    <div class="timeline-icon-container icon-edu order-1 md:order-2 mb-4 md:mb-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <div class="w-full md:w-5/12 order-3"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" class="py-20 md:py-24">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-12" data-aos="fade-down">Publications &
+                Research</h2>
+            <div class="max-w-3xl mx-auto" data-aos="fade-up">
+                <div
+                    class="bg-white bg-opacity-80 rounded-xl shadow-lg p-8 text-left transition duration-300 transform card-hover">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Research Paper</h3>
+                    <p class="text-lg text-gray-700 leading-relaxed italic mb-4">
+                        "Consumer Sentiment Insights on Smart Ring Using Supervised Classifiers: A Comparative Study"
+                    </p>
+                    <p class="text-gray-600 text-sm mb-4">
+                        <span class="font-medium">Description:</span> Co-authored a research paper analysing consumer
+                        sentiment using supervised machine learning models. Conducted comparative evaluation of
+                        classifiers on real-world data and presented findings at the National Conference on Robotics &
+                        AI.
+                    </p>
+                    <p class="text-gray-600 text-sm mb-4">
+                        <span class="font-medium">Conference & Date:</span> National Conference on Robotics &
+                        AI<br><b>March 2025</b>
+                    </p>
+                    <div class="mt-4">
+                        <a href="https://www.ijsred.com/rcs-2025-part1.html" target="_blank"
+                            class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium transition duration-300">
+                            Read Publication
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6M14 4l6 6" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 md:py-24 relative">
+        <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
+                <div class="md:w-1/2 md:pr-12 text-center md:text-left" data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">My Expertise</h2>
+                    <p class="text-lg text-gray-200 leading-relaxed">
+                        I specialize in leveraging data and technology to create intelligent solutions. Here's a
+                        detailed breakdown of my key skills and proficiencies.
+                    </p>
+                </div>
+                <div class="md:w-1/2 mt-8 md:mt-0" data-aos="fade-left">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div class="skill-card skill-card-hover p-6 rounded-xl shadow-lg transition duration-300"
+                            data-aos="zoom-in" data-aos-delay="100">
+                            <div class="flex items-center mb-4 space-x-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-indigo-600"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                    <path d="M2 17l10 5 10-5"></path>
+                                    <path d="M2 12l10 5 10-5"></path>
+                                </svg>
+                                <h3 class="text-xl font-bold text-gray-900">Data Science & Analytics</h3>
+                            </div>
+                            <ul class="text-gray-700 text-left list-inside space-y-1">
+                                <li>Python, SQL, R(Basic)</li>
+                                <li>Supervised Machine Learning</li>
+                                <li>Predictive Analytics</li>
+                                <li>Model Training & Evaluation</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card skill-card-hover p-6 rounded-xl shadow-lg transition duration-300"
+                            data-aos="zoom-in" data-aos-delay="200">
+                            <div class="flex items-center mb-4 space-x-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-purple-600"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                                <h3 class="text-xl font-bold text-gray-900">Technologies & Development</h3>
+                            </div>
+                            <ul class="text-gray-700 text-left list-inside space-y-1">
+                                <li>React Native, Tailwind CSS</li>
+                                <li>Flask, REST API Integration</li>
+                                <li>Java (Tkinter)</li>
+                                <li>Web-based Development</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card skill-card-hover p-6 rounded-xl shadow-lg transition duration-300"
+                            data-aos="zoom-in" data-aos-delay="300">
+                            <div class="flex items-center mb-4 space-x-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-600"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M17 20h-4m4 0a2 2 0 01-2 2H9a2 2 0 01-2-2m2 0V7m0 13a2 2 0 002 2h2m-6 0h6m-4 0a2 2 0 01-2-2m2 2V7m6 13V7m-4 4h4m-4 4h4m-4 4h4m-4-8h4m-4-4h4">
+                                    </path>
+                                </svg>
+                                <h3 class="text-xl font-bold text-gray-900">CRM & Digital Marketing</h3>
+                            </div>
+                            <ul class="text-gray-700 text-left list-inside space-y-1">
+                                <li>Salesforce Basics</li>
+                                <li>SEO, Data Analytics</li>
+                                <li>Lead Generation</li>
+                                <li>E-commerce Consumer Insights</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card skill-card-hover p-6 rounded-xl shadow-lg transition duration-300"
+                            data-aos="zoom-in" data-aos-delay="400">
+                            <div class="flex items-center mb-4 space-x-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M17 20h-4m4 0a2 2 0 01-2 2H9a2 2 0 01-2-2m2 0V7m0 13a2 2 0 002 2h2m-6 0h6m-4 0a2 2 0 01-2-2m2 2V7m6 13V7m-4 4h4m-4 4h4m-4 4h4m-4-8h4m-4-4h4">
+                                    </path>
+                                </svg>
+                                <h3 class="text-xl font-bold text-gray-900">Soft Skills & Leadership</h3>
+                            </div>
+                            <p class="text-gray-700 text-left leading-relaxed">
+                                I bring strong communication, problem-solving, and decision-making skills, complemented
+                                by proven leadership in projects and research.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 md:py-24 relative">
+        <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 text-center" data-aos="fade-down">My Creative
+                Projects</h2>
+            <p class="text-lg text-gray-200 max-w-2xl mx-auto mb-12 text-center" data-aos="fade-up">
+                Showcasing my work in data science, machine learning, and application development.
+            </p>
+            <div class="flex horizontal-scroll-container pb-8 space-x-8">
+
+                <div class="project-card flex-shrink-0 w-80 md:w-96" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-img-container">
+                        <img class="project-img" src="/src/rehab.png" alt="AI Rehabilitation">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">AI-Assisted Rehabilitation</h3>
+                        <p class="text-gray-700 text-sm flex-grow mb-4">Built an AI-powered rehabilitation web platform
+                            using webcam-based pose estimation (MediaPipe) and Random Forest models to classify exercise
+                            repetitions with 80–86% accuracy and provide real-time corrective voice feedback.</p>
+                        <div class="flex flex-wrap gap-2 text-xs font-medium text-gray-500 mb-4">
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#Flask</span>
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#OpenCV</span>
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#MediaPipe</span>
+                        </div>
+                        <a href="https://www.linkedin.com/in/ruturaj-nawale-863418288/details/projects/"
+                            class="inline-block self-start mt-auto text-indigo-600 hover:text-indigo-800 font-medium transition duration-300">View
+                            Project &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- <div class="project-card flex-shrink-0 w-80 md:w-96" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-img-container">
+                        <img class="project-img" src="/src/ruturajBg2.jpg" alt="Student Performance">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Proactive Student Performance Prediction</h3>
+                        <p class="text-gray-700 text-sm flex-grow mb-4">An AI-driven dashboard that predicts student
+                            academic performance based on comprehensive data. Enables timely intervention and
+                            data-driven decision-making for educators and students, shifting from reactive
+                            problem-solving to proactive support.</p>
+                        <div class="flex flex-wrap gap-2 text-xs font-medium text-gray-500 mb-4">
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#XGBoost</span>
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#Streamlit</span>
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#DataScience</span>
+                        </div>
+                        <a href="#"
+                            class="inline-block self-start mt-auto text-indigo-600 hover:text-indigo-800 font-medium transition duration-300">View
+                            Project &rarr;</a>
+                    </div>
+                </div> -->
+
+                <div class="project-card flex-shrink-0 w-80 md:w-96" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-img-container">
+                        <img class="project-img" src="/src/text2image.png" alt="Text2imageGenerator">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Text to Image Generator</h3>
+                        <p class="text-gray-700 text-sm flex-grow mb-4">Developed a modular generative AI application
+                            integrating Stable Diffusion and GPT-2 via Hugging Face. Refactored from Tkinter to a
+                            Streamlit-based web interface, ensuring clean separation of AI logic and UI.</p>
+                        <div class="flex flex-wrap gap-2 text-xs font-medium text-gray-500 mb-4">
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#Generative AI</span>
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#Stable Diffusion</span>
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#Streamlit</span>
+                        </div>
+                        <a href="https://www.linkedin.com/in/ruturaj-nawale-863418288/details/projects/"
+                            class="inline-block self-start mt-auto text-indigo-600 hover:text-indigo-800 font-medium transition duration-300">View
+                            Project &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="project-card flex-shrink-0 w-80 md:w-96" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-img-container">
+                        <img class="project-img" src="/src/cardioriskProject.png" alt="CardioHealth">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">CardioHealth Risk Predictor Pro</h3>
+                        <p class="text-gray-700 text-sm flex-grow mb-4">Built a full-stack cardiovascular risk
+                            prediction system using a production-ready Random Forest model. Implemented advanced
+                            features including a “What-If” risk analysis tool, interactive visualizations, and
+                            geospatial resource mapping.</p>
+                        <div class="flex flex-wrap gap-2 text-xs font-medium text-gray-500 mb-4">
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#MachineLearning</span>
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#Random Forest</span>
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#Streamlit</span>
+                        </div>
+                        <a href="https://www.linkedin.com/in/ruturaj-nawale-863418288/details/projects/"
+                            class="inline-block self-start mt-auto text-indigo-600 hover:text-indigo-800 font-medium transition duration-300">View
+                            Project &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="project-card flex-shrink-0 w-80 md:w-96" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-img-container">
+                        <img class="project-img" src="/src/salesforceProject.png" alt="GSBG">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">GSBG | Salesforce Partners</h3>
+                        <p class="text-gray-700 text-sm flex-grow mb-4">Designed and developed the official GSBG company
+                            website from scratch, handling both front-end and back-end development. Managed the full
+                            process, from concept to deployment.</p>
+                        <div class="flex flex-wrap gap-2 text-xs font-medium text-gray-500 mb-4">
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#HTML/CSS</span>
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#JS</span>
+                            <span class="bg-gray-200 px-2 py-1 rounded-full">#WebDev</span>
+                        </div>
+                        <a href="https://www.gsbg.in/"
+                            class="inline-block self-start mt-auto text-indigo-600 hover:text-indigo-800 font-medium transition duration-300">View
+                            Project &rarr;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 md:py-24 relative" data-aos="fade-in">
+        <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-aos="fade-down">Get In Touch</h2>
+            <p class="text-lg text-gray-200 max-w-2xl mx-auto mb-8" data-aos="fade-up">
+                I'm always open to new opportunities and collaborations. Reach out via email at <a
+                    href="mailto:ruturajnawale888@gmail.com"
+                    class="text-indigo-400 hover:text-white">ruturajnawale888@gmail.com</a>, call me at <a
+                    href="tel:+919833097874" class="text-indigo-400 hover:text-white">+91 9833097874</a>, or use the
+                form below.
+            </p>
+            <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-lg bg-opacity-80" data-aos="zoom-in"
+                data-aos-delay="200">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="e57d09f9-9320-4ed1-ac1f-2d8db6c382ea">
+
+                    <div class="mb-6">
+                        <input type="text" name="name" placeholder="Your Name" required
+                            class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300">
+                    </div>
+                    <div class="mb-6">
+                        <input type="email" name="email" placeholder="Your Email" required
+                            class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300">
+                    </div>
+                    <div class="mb-6">
+                        <textarea name="message" rows="5" placeholder="Your Message" required
+                            class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit"
+                            class="w-full bg-indigo-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-indigo-700 transition duration-300 shadow-md">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white pt-16 pb-8 border-t border-gray-800 relative overflow-hidden"
+        data-aos="fade-up">
+        <!-- Background Glow -->
+        <div
+            class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-900 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-blob">
+        </div>
+        <div
+            class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-900 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-blob animation-delay-2000">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Col 1: Brand -->
+                <div class="col-span-1 md:col-span-1">
+                    <h3
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 mb-4">
+                        Ruturaj Nawale
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Aspiring Data Scientist and ML Engineer. <br>
+                        Turning complex data into actionable insights and intelligent solutions.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/ruturaj-nawale-863418288" target="_blank"
+                            class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                        <a href="mailto:ruturajnawale888@gmail.com"
+                            class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#hero" class="hover:text-indigo-400 transition duration-300">Home</a></li>
+                        <li><a href="#about" class="hover:text-indigo-400 transition duration-300">About Me</a></li>
+                        <li><a href="#projects" class="hover:text-indigo-400 transition duration-300">Projects</a></li>
+                        <li><a href="#experiences" class="hover:text-indigo-400 transition duration-300">Experience</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Resources -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Resources</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#skills" class="hover:text-indigo-400 transition duration-300">My Skills</a></li>
+                        <li><a href="#publications"
+                                class="hover:text-indigo-400 transition duration-300">Publications</a></li>
+                        <li><a href="https://www.linkedin.com/in/ruturaj-nawale-863418288/details/recommendations/"
+                                target="_blank" class="hover:text-indigo-400 transition duration-300">Testimonials</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Contact</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-indigo-500 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>Navi Mumbai, India</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-indigo-500 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <a href="mailto:ruturajnawale888@gmail.com"
+                                class="hover:text-white transition">ruturajnawale888@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-gray-800 pt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center bg-opacity-50">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2025 Ruturaj Bhaskar Nawale. All Rights Reserved.
+                </p>
+                <div class="flex space-x-6 text-sm text-gray-500">
+                    <span class="hover:text-indigo-400 cursor-pointer transition">Privacy Policy</span>
+                    <span class="hover:text-indigo-400 cursor-pointer transition">Terms of Service</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+    </script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
