@@ -1,87 +1,107 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { navigation } from "@/lib/data";
 
-const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Research", href: "#research" },
-  { name: "Experience", href: "#experience" },
-]
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-export function Navbar() {
-  const [isScrolled, setIsScrolled] = React.useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
-
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
+      setIsOpen(false);
     }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  };
 
   return (
-    <header
+    <nav
       className={cn(
-        "fixed top-0 z-50 w-full transition-all duration-300",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b"
-          : "bg-transparent"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
+        scrolled ? "bg-black/50 backdrop-blur-md border-b border-white/10 shadow-sm" : "bg-transparent py-4"
       )}
     >
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="font-bold text-xl tracking-tight">
-          Ruturaj<span className="text-primary">.dev</span>
-        </Link>
-        
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-medium hover:text-primary transition-colors"
-            >
-              {item.name}
-            </Link>
-          ))}
-          <Button variant="default" size="sm" asChild>
-            <Link href="/RuturajNawale_30_01_2026_Resume.pdf" target="_blank">Resume</Link>
-          </Button>
-        </nav>
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex items-center justify-between h-16">
+          <Link 
+            href="/" 
+            className="text-xl font-bold tracking-tighter text-white hover:opacity-80 transition-opacity"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
+            RN.
+          </Link>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navigation.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={(e) => handleScrollToSection(e, item.href)}
+                className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group"
+              >
+                {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full" />
+              </a>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 text-white focus:outline-none"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Nav */}
-      {mobileMenuOpen && (
-        <div className="md:hidden absolute top-16 left-0 w-full bg-background border-b shadow-lg p-4 flex flex-col gap-4 animate-in slide-in-from-top-5">
-           {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-lg font-medium py-2 border-b border-muted last:border-0"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
-           <Button className="w-full mt-2" asChild>
-            <Link href="/RuturajNawale_24_12_2025_Resume.pdf" target="_blank">Resume</Link>
-          </Button>
-        </div>
-      )}
-    </header>
-  )
+      {/* Mobile Navigation */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-background border-b border-border"
+          >
+            <div className="container px-4 py-4 flex flex-col space-y-4">
+              {navigation.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={(e) => handleScrollToSection(e, item.href)}
+                  className="block text-lg font-medium text-foreground/80 hover:text-primary transition-colors py-2"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
 }

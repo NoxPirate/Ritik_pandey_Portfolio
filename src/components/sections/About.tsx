@@ -1,39 +1,58 @@
-"use client"
-import { motion } from "framer-motion"
+"use client";
 
-export function About() {
+import { motion } from "framer-motion";
+import { personalInfo } from "@/lib/data";
+import { Badge } from "@/components/ui/badge";
+
+const quickBadges = [
+  "AI/ML", "Full-Stack", "Founder Mindset", "Innovation"
+];
+
+export default function About() {
   return (
-    <section id="about" className="py-24 bg-background">
-      <div className="container px-4 md:px-6">
-        <div className="grid gap-12 lg:grid-cols-2 items-center">
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-left border-l-4 border-primary pl-4">
+    <section id="about" className="py-24 bg-muted/50 text-foreground">
+      <div className="container px-4 md:px-6 mx-auto">
+        <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row gap-12 items-center"
+        >
+          {/* Left Column: Text */}
+          <div className="flex-1 space-y-6">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">
               About Me
             </h2>
-            <div className="space-y-4 text-lg text-muted-foreground">
-              <p>
-                I am an <span className="font-semibold text-foreground">AI-Enabled Full-Stack Engineer</span> and <span className="font-semibold text-foreground">Machine Learning Practitioner</span> focused on building production-ready systems that solve real-world problems.
-              </p>
-              <p>
-                My work bridges the gap between complex AI models and scalable web applications. I don't just train models; I deploy them into intuitive interfaces that drive user value.
-              </p>
-              <p>
-                With a strong foundation in <span className="font-semibold text-foreground">Systems Thinking</span>, I approach every project with an end-to-end mindset—architecting solutions that are robust, scalable, and maintainable.
-              </p>
-              <p>
-                Currently, I am also building <span className="font-medium text-primary">Cognent</span>, a digital engineering studio focused on high-performance systems for healthcare, education, and CRM domains.
-              </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {personalInfo.about.p1}
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {personalInfo.about.p2}
+            </p>
+            
+            <div className="flex flex-wrap gap-2 mt-4">
+              {quickBadges.map((badge, idx) => (
+                <Badge key={idx} variant="secondary" className="text-sm px-3 py-1 bg-white text-gray-800 border border-input shadow-sm hover:scale-105 transition-transform">
+                  {badge}
+                </Badge>
+              ))}
             </div>
           </div>
-          
-          <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-xl bg-muted/20 sm:w-[400px]">
-             {/* Placeholder for abstract visual or photo if desired later */}
-             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-background to-background flex items-center justify-center border rounded-xl">
-                <span className="text-muted-foreground/50 font-light">System Architect</span>
-             </div>
+
+          {/* Right Column: Image or Visual */}
+          <div className="flex-1 w-full flex justify-center items-center">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto transform rotate-3 transition-transform hover:rotate-0 duration-500">
+             <div className="absolute inset-0 bg-blue-500 rounded-3xl blur-2xl opacity-20 animate-pulse" />
+             <img
+               src="/hero-portrait.png"
+               alt="Ruturaj Nawale"
+               className="relative z-10 w-full h-full object-cover rounded-3xl border border-white/10 shadow-2xl"
+             />
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
-  )
+  );
 }

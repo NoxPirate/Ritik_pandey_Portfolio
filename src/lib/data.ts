@@ -1,105 +1,182 @@
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+
+export const personalInfo = {
+    name: "Ruturaj Nawale",
+    title: "AI-Enabled Full-Stack Engineer",
+    tagline: "Building intelligent systems that solve real-world problems.",
+    about: {
+        p1: "I am a passionate Full-Stack Engineer with a strong focus on Artificial Intelligence and Machine Learning. My journey involves bridging the gap between complex algorithms and intuitive user experiences.",
+        p2: "With a founder's mindset, I look for opportunities to innovate and optimize. Whether it's developing predictive models for healthcare or building scalable web platforms for campus communities, I am driven by impact.",
+    },
+    socials: [
+        {
+            label: "GitHub",
+            href: "https://github.com/ruturajnawale", // specific link or placeholder
+            icon: Github,
+        },
+        {
+            label: "LinkedIn",
+            href: "https://linkedin.com/in/ruturajnawale", // specific link or placeholder
+            icon: Linkedin,
+        },
+        {
+            label: "Twitter",
+            href: "https://twitter.com/", // placeholder
+            icon: Twitter,
+        },
+        {
+            label: "Email",
+            href: "mailto:ruturajnawale@gmail.com", // inferred from context if available, else placeholder
+            icon: Mail,
+        },
+    ],
+};
+
+export const navigation = [
+    { label: "About", href: "#about" },
+    { label: "Skills", href: "#skills" },
+    { label: "Projects", href: "#projects" },
+    { label: "Journey", href: "#journey" },
+    { label: "Testimonials", href: "#testimonials" },
+    { label: "Insights", href: "#insights" },
+    { label: "Contact", href: "#contact" },
+];
+
+export const skills = [
+    {
+        category: "Machine Learning & AI",
+        items: ["TensorFlow", "PyTorch", "Scikit-learn", "OpenCV", "NLP", "Generative AI", "Predictive Modeling"],
+    },
+    {
+        category: "Full-Stack & Systems",
+        items: ["Next.js", "React", "Node.js", "Express", "PostgreSQL", "MongoDB", "Redis"],
+    },
+    {
+        category: "Programming & Data",
+        items: ["Python", "JavaScript", "TypeScript", "C++", "SQL", "Data Structures", "Algorithms"],
+    },
+    {
+        category: "Tools & DevOps",
+        items: ["Git", "Docker", "AWS", "Vercel", "Linux", "CI/CD"],
+    },
+];
+
 export const projects = [
     {
         title: "Campus Project Hub",
-        description: "A cross-platform collaboration environment preventing project redundancy in educational institutions. Features real-time modification, NLP-based moderation, and seamless approval workflows.",
-        problem: "University students often duplicate existing projects due to lack of visibility, leading to wasted resources and lack of innovation.",
-        solution: "Centralized repository with semantic search and approval workflows to track and showcase student projects.",
-        architecture: "React Native mobile app + Next.js web dashboard. Serverless backend on Vercel.",
-        techStack: ["React Native", "Flask", "NLP", "Vercel", "Firebase"],
-        impact: "Streamlined project submission for 500+ students (simulated).",
+        description: "A centralized platform for students to showcase projects, collaborate, and find resources within the campus ecosystem.",
+        tech: ["Next.js", "MongoDB", "Tailwind CSS"],
         links: {
-            github: "https://github.com/ruturajbhaskarnawale/Campus-Project-Hub", // Placeholder if not exact
-            demo: "#"
-        }
+            github: "https://github.com/",
+            demo: "https://demo.com",
+        },
+        image: "/campus-hub.png",
     },
     {
         title: "AI-Assisted Rehabilitation Platform",
-        description: "Computer vision system for real-time physical therapy feedback. Uses pose estimation to correct posture and track recovery progress.",
-        problem: "Physical therapy is expensive and requires constant supervision. Patients often perform exercises incorrectly at home.",
-        solution: "Web-based platform using webcam to track key body points and calculate joint angles in real-time.",
-        architecture: "MediaPipe for pose estimation, Random Forest classifier for exercise correctness.",
-        techStack: ["Python", "MediaPipe", "Random Forest", "React"],
-        impact: "Achieved 80–86% accuracy in exercise classification.",
+        description: "An innovative system using computer vision to guide patients through rehabilitation exercises with real-time feedback.",
+        tech: ["Python", "OpenCV", "React", "Flask"],
         links: {
-            github: "https://github.com/ruturajbhaskarnawale/AI-Rehab",
-            demo: "#"
-        }
+            github: "https://github.com/",
+            demo: "https://demo.com",
+        },
+        image: "/ai-rehab.png",
     },
     {
-        title: "Student Performance Prediction Dashboard",
-        description: "Data-driven dashboard to identify at-risk students early. Uses machine learning to predict academic outcomes based on historical data.",
-        problem: "Educators struggle to identify struggling students before it's too late to intervene.",
-        solution: "Predictive model integration into a teacher dashboard for proactive alerts.",
-        architecture: "XGBoost model serving via API, interactive frontend dashboard.",
-        techStack: ["XGBoost", "Python", "Pandas", "Next.js"],
-        impact: "Enables early intervention strategies for educational institutions.",
+        title: "Student Performance Prediction",
+        description: "Machine learning model to analyze student data and predict academic performance, identifying at-risk students EARLY.",
+        tech: ["Python", "Scikit-learn", "Pandas", "Streamlit"],
         links: {
-            github: "https://github.com/ruturajbhaskarnawale/Student-Performance",
-            demo: "#"
-        }
+            github: "https://github.com/",
+            demo: "https://demo.com",
+        },
+        image: "/student-perf.png",
     },
     {
         title: "Text-to-Image Generative AI",
-        description: "Modular latent diffusion system for high-quality image synthesis. Integrates GPT-2 for prompt refinement.",
-        problem: "Generating specific, high-quality images from vague text prompts is difficult.",
-        solution: "Pipeline combining LLM prompt enhancement with Stable Diffusion generation.",
-        architecture: "Stable Diffusion pipeline with GPT-2 pre-processing.",
-        techStack: ["Stable Diffusion", "GPT-2", "PyTorch", "Python"],
-        impact: "demonstrated capability in generative AI pipelines.",
+        description: "A deep learning model capable of generating realistic images from natural language descriptions.",
+        tech: ["PyTorch", "GANs/Diffusion", "React"],
         links: {
-            github: "https://github.com/ruturajbhaskarnawale/Text-to-Image",
-            demo: "#"
-        }
+            github: "https://github.com/",
+            demo: "https://demo.com",
+        },
+        image: "/images/gen-ai.png",
+    },
+    {
+        title: "CardioHealth Risk Predictor Pro",
+        description: "Advanced cardiovascular risk assessment tool utilizing patient data to provide accurate health risk probabilities.",
+        tech: ["Machine Learning", "FastAPI", "React"],
+        links: {
+            github: "https://github.com/",
+            demo: "https://demo.com",
+        },
+        image: "/images/cardio-health.png",
     },
     {
         title: "GSBG Official Website",
-        description: "Corporate website for a Salesforce Partner company. focused on lead generation and professional presence.",
-        problem: "Company needed a modern digital identity to attract enterprise clients.",
-        solution: "Responsive, SEO-optimized website with CRM integration.",
-        architecture: "Modern frontend stack integrated with Salesforce Web-to-Lead.",
-        techStack: ["Salesforce", "Web Development", "SEO"],
-        impact: "Established digital presence and automated lead capture.",
+        description: "Official website for GSBG, featuring modern design, responsive layout, and optimized performance.",
+        tech: ["Next.js", "Framer Motion", "Tailwind CSS"],
         links: {
-            github: "#",
-            demo: "#"
-        }
-    }
+            github: "https://github.com/",
+            demo: "https://demo.com",
+        },
+        image: "/images/gsbg.png",
+    },
 ];
 
-export const experience = [
+export const journey = [
     {
-        role: "Salesforce Administrator",
-        company: "GSBG Technologies",
-        period: "2024 - Present",
-        description: "Managing CRM automation, user roles, and data security. streamlining business processes through flow automation."
+        year: "2024",
+        title: "Software Engineer Intern",
+        company: "Tech Corp (Placeholder)",
+        description: "Worked on scalable backend services and optimized database queries.",
     },
     {
-        role: "Web Developer",
-        company: "ReaEspresso PropTech",
-        period: "2023 - 2024",
-        description: "Developed frontend interfaces for property management solutions. Optimized load times and responsiveness."
-    }
-];
-
-export const skills = {
-    programming: ["Python", "TypeScript", "JavaScript", "Java", "C++"],
-    frameworks: ["Next.js", "React", "Node.js", "Flask", "Tailwind CSS"],
-    ml_ai: ["PyTorch", "Scikit-learn", "OpenCV", "MediaPipe", "LLMs (GPT/Llama)"],
-    tools: ["Git", "Docker", "AWS", "Vercel", "Salesforce"]
-};
-
-export const research = [
-    {
-        title: "Review on Early Detection of Sepsis using Machine Learning",
-        conference: "IC-IMPACT 2025 (International Conference)",
-        description: "Analyzed ML methodologies for early sepsis detection in ICU patients. Proposed a hybrid model approach for improved accuracy.",
-        impact: "Highlights the potential of AI in critical care medicine."
+        year: "2023",
+        title: "Founded Campus Project Hub",
+        company: "University Project",
+        description: "Led a team of 4 to build and launch the platform for over 500 students.",
     },
     {
-        title: "Video Anomaly Detection in Surveillance",
-        conference: "Pending Publication",
-        description: "Developed a system to detect unusual activities in real-time video feeds using deep learning.",
-        impact: "Enhances public safety through automated monitoring."
-    }
+        year: "2022",
+        title: "Research Assistant",
+        company: "Uni AI Lab",
+        description: "Conducted research on computer vision applications in healthcare.",
+    },
+    {
+        year: "2021",
+        title: "Started Computer Science Degree",
+        company: "University Name",
+        description: "Began journey into algorithms, systems, and software engineering.",
+    },
 ];
 
+export const testimonials = [
+    {
+        quote: "Ruturaj is an exceptional engineer who bridges the gap between AI theory and practical application perfectly.",
+        author: "Project Manager",
+        role: "Tech Solutions Inc.",
+    },
+    {
+        quote: "The attention to detail in the UI/UX of the GSBG website was outstanding. Highly recommended.",
+        author: "Client Name",
+        role: "GSBG Director",
+    },
+];
+
+export const insights = [
+    {
+        title: "The Future of AI in Healthcare",
+        date: "Oct 12, 2024",
+        readTime: "5 min read",
+        link: "#",
+        image: "/images/blog-ai-health.png",
+    },
+    {
+        title: "Optimizing Next.js for Performance",
+        date: "Sep 28, 2024",
+        readTime: "4 min read",
+        link: "#",
+        image: "/images/blog-nextjs.png",
+    },
+];
