@@ -1,0 +1,48 @@
+{
+    "buildCommand": "npm run build",
+    "devCommand": "npm run dev",
+    "installCommand": "npm install",
+    "framework": "nextjs",
+    "regions": [
+        "iad1"
+    ],
+    "git": {
+        "deploymentEnabled": {
+            "main": true
+        }
+    },
+    "github": {
+        "silent": false,
+        "autoAlias": true
+    },
+    "headers": [
+        {
+            "source": "/fonts/(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000, immutable"
+                }
+            ]
+        },
+        {
+            "source": "/(.*).pdf",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/pdf"
+                },
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000"
+                }
+            ]
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/resume",
+            "destination": "/RuturajNawale_30_01_2026_Resume.pdf"
+        }
+    ]
+}
