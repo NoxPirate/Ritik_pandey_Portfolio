@@ -2,56 +2,134 @@
 
 import { motion } from "framer-motion";
 import { personalInfo } from "@/lib/data";
-import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
-const quickBadges = [
-  "AI/ML", "Full-Stack", "Founder Mindset", "Innovation"
-];
+// --- Components ---
+
+const BentoCard = ({ 
+  children, 
+  className, 
+  delay = 0 
+}: { 
+  children: React.ReactNode; 
+  className?: string;
+  delay?: number;
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay }}
+    viewport={{ once: true, margin: "-100px" }}
+    className={cn(
+      "group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition-all hover:bg-white/10",
+      className
+    )}
+  >
+    {/* Hover Glow Effect */}
+    <div className="absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
+       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-xl" />
+    </div>
+    
+    <div className="relative z-10 h-full flex flex-col">{children}</div>
+  </motion.div>
+);
+
+const TechBadge = ({ name }: { name: string }) => (
+  <span className="px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-white/30 transition-colors">
+    {name}
+  </span>
+);
+
+// --- Main Section ---
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-muted/50 text-foreground">
-      <div className="container px-4 md:px-6 mx-auto">
-        <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="flex flex-col md:flex-row gap-12 items-center"
-        >
-          {/* Left Column: Text */}
-          <div className="flex-1 space-y-6">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">
-              About Me
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {personalInfo.about.p1}
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {personalInfo.about.p2}
-            </p>
-            
-            <div className="flex flex-wrap gap-2 mt-4">
-              {quickBadges.map((badge, idx) => (
-                <Badge key={idx} variant="secondary" className="text-sm px-3 py-1 bg-white text-gray-800 border border-input shadow-sm hover:scale-105 transition-transform">
-                  {badge}
-                </Badge>
-              ))}
-            </div>
-          </div>
+    <section id="about" className="relative py-32 bg-black text-white overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
 
-          {/* Right Column: Image or Visual */}
-          <div className="flex-1 w-full flex justify-center items-center">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto transform rotate-3 transition-transform hover:rotate-0 duration-500">
-             <div className="absolute inset-0 bg-blue-500 rounded-3xl blur-2xl opacity-20 animate-pulse" />
-             <img
-               src="/hero-portrait.png"
-               alt="Ruturaj Nawale"
-               className="relative z-10 w-full h-full object-cover rounded-3xl border border-white/10 shadow-2xl"
-             />
-            </div>
-          </div>
+      <div className="container px-4 md:px-6 mx-auto relative z-10">
+        
+        {/* Section Header */}
+        <motion.div 
+            initial={{ opacity: 0 }} 
+            whileInView={{ opacity: 1 }} 
+            viewport={{ once: true }}
+            className="mb-16"
+        >
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
+              <span className="text-blue-500">01.</span> THE ARCHITECT
+            </h2>
+            <div className="h-px w-full bg-gradient-to-r from-white/20 to-transparent" />
         </motion.div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[minmax(180px,auto)]">
+          
+          {/* 1. Main Bio (Large) */}
+          <BentoCard className="md:col-span-2 md:row-span-2 p-8" delay={0.1}>
+            <div className="flex flex-col justify-between h-full">
+                <div>
+                     <h3 className="text-xl text-gray-400 font-mono mb-6">/ MISSION_LOG</h3>
+                     <p className="text-2xl md:text-3xl font-light leading-relaxed text-gray-200">
+                        {personalInfo.about.p1}
+                     </p>
+                </div>
+                <div className="mt-8 pt-8 border-t border-white/10">
+                    <p className="text-lg text-gray-400">
+                      {personalInfo.about.p2}
+                    </p>
+                </div>
+            </div>
+          </BentoCard>
+
+          {/* 2. Stats - Experience */}
+          <BentoCard className="md:col-span-1 p-8 flex items-center justify-center text-center" delay={0.2}>
+             <div>
+                <h4 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-600">
+                    1+
+                </h4>
+                <p className="text-sm font-mono text-gray-400 mt-2 tracking-widest uppercase">Years Exp</p>
+             </div>
+          </BentoCard>
+
+          {/* 3. Stats - Projects */}
+          <BentoCard className="md:col-span-1 p-8 flex items-center justify-center text-center" delay={0.3}>
+             <div>
+                <h4 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-600">
+                    10+
+                </h4>
+                <p className="text-sm font-mono text-gray-400 mt-2 tracking-widest uppercase">Systems Built</p>
+             </div>
+          </BentoCard>
+
+          {/* 4. Tech Stack */}
+          <BentoCard className="md:col-span-2 p-8" delay={0.4}>
+              <h3 className="text-xl text-gray-400 font-mono mb-6">/ ACTIVE_MODULES</h3>
+              <div className="flex flex-wrap gap-2">
+                 {["Next.js", "React", "TypeScript", "Node.js", "Python", "AWS", "Docker", "PostgreSQL", "Sqlite", "TailwindCSS", "deep learning", "machine learning", "Gen AI","RAG","Framer Motion"].map(tech => (
+                     <TechBadge key={tech} name={tech} />
+                 ))}
+                 <TechBadge name="...and more" />
+              </div>
+          </BentoCard>
+
+          {/* 5. Philosophy / Quote */}
+          <BentoCard className="md:col-span-2 p-8" delay={0.5}>
+              <div className="flex flex-col md:flex-row items-center gap-8 h-full">
+                 <div className="md:w-1/3">
+                    <h3 className="text-xl text-gray-400 font-mono">/ CORE_PHILOSOPHY</h3>
+                 </div>
+                 <div className="md:w-2/3 border-l-2 border-blue-500 pl-6">
+                    <blockquote className="text-xl italic text-gray-300">
+                       &quot;Code is not just functionality; it's the architecture of intelligence.&quot;
+                    </blockquote>
+                 </div>
+              </div>
+          </BentoCard>
+
+        </div>
       </div>
     </section>
   );

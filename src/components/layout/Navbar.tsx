@@ -13,7 +13,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -23,7 +23,7 @@ export default function Navbar() {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
+      const offsetTop = element.getBoundingClientRect().top + window.scrollY - 100;
       window.scrollTo({
         top: offsetTop,
         behavior: "smooth",
@@ -33,17 +33,26 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
-        scrolled ? "bg-black/50 backdrop-blur-md border-b border-white/10 shadow-sm" : "bg-transparent py-4"
-      )}
-    >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-16">
+    <>
+      <nav
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-300 pointer-events-none",
+          scrolled ? "pt-4" : "pt-6"
+        )}
+      >
+        <motion.div
+           initial={{ y: -100, opacity: 0 }}
+           animate={{ y: 0, opacity: 1 }}
+           className={cn(
+             "pointer-events-auto relative flex items-center justify-between px-6 py-3 rounded-full border transition-all duration-300 mx-4",
+             scrolled 
+               ? "bg-black/60 backdrop-blur-xl border-white/10 shadow-lg w-[90vw] md:w-auto md:min-w-[500px]" 
+               : "bg-transparent border-transparent w-full md:w-auto max-w-7xl"
+           )}
+        >
           <Link 
             href="/" 
-            className="text-xl font-bold tracking-tighter text-white hover:opacity-80 transition-opacity"
+            className="text-xl font-bold tracking-tighter text-white mr-8"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
@@ -53,55 +62,72 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-1">
             {navigation.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleScrollToSection(e, item.href)}
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group"
+                className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors rounded-full group overflow-hidden"
               >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full" />
+                <span className="relative z-10">{item.label}</span>
+                <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 rounded-full transition-opacity duration-300" />
               </a>
             ))}
           </div>
 
+          <div className="hidden md:block ml-8">
+             <a 
+               href="#contact"
+               onClick={(e) => handleScrollToSection(e, "#contact")}
+               className="px-5 py-2 text-sm font-medium text-black bg-white rounded-full hover:bg-gray-200 transition-colors"
+             >
+               Let's Talk
+             </a>
+          </div>
+
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-white focus:outline-none"
+            className="md:hidden p-2 text-white bg-white/10 rounded-full focus:outline-none backdrop-blur-md"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
-        </div>
-      </div>
+        </motion.div>
+      </nav>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation Panel */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background border-b border-border"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed top-24 left-4 right-4 z-40 bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden md:hidden"
           >
-            <div className="container px-4 py-4 flex flex-col space-y-4">
+            <div className="flex flex-col p-6 space-y-4">
               {navigation.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleScrollToSection(e, item.href)}
-                  className="block text-lg font-medium text-foreground/80 hover:text-primary transition-colors py-2"
+                  className="text-lg font-medium text-gray-300 hover:text-white transition-colors"
                 >
                   {item.label}
                 </a>
               ))}
+               <a
+                  href="#contact"
+                  onClick={(e) => handleScrollToSection(e, "#contact")}
+                  className="text-lg font-medium text-blue-400 hover:text-blue-300 transition-colors pt-4 border-t border-white/10"
+                >
+                  Let's Talk
+                </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 }

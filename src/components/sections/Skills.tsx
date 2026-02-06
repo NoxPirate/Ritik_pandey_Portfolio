@@ -1,57 +1,151 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useMemo, useRef, useState, useEffect } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Text, TrackballControls, Billboard } from "@react-three/drei";
+import * as THREE from "three";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { skills } from "@/lib/data";
 
-export default function Skills() {
+// Flatten all skills into a single array for the cloud
+const allSkills = skills.flatMap(s => s.items);
+
+function Word({ children, position, ...props }: { children: string; position: THREE.Vector3 } & any) {
+  // REMOVED custom font to ensure visibility. Using default font.
+  const fontProps = { fontSize: 2.5, letterSpacing: -0.05, lineHeight: 1, 'material-toneMapped': false };
+  const ref = useRef<THREE.Mesh>();
+  const [hovered, setHovered] = useState(false);
+  
+  const over = (e: any) => { e.stopPropagation(); setHovered(true) };
+  const out = () => setHovered(false);
+
+  // Change cursor on hover
+  useEffect(() => {
+    if (hovered) document.body.style.cursor = 'pointer';
+    return () => { document.body.style.cursor = 'auto' }
+  }, [hovered]);
+
   return (
-    <section className="relative z-20 bg-[#0a0a0a] min-h-screen py-32 px-4 md:px-12 overflow-hidden" id="skills">
-      {/* Background Ambience */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px]" />
-      </div>
+    <Billboard position={position}>
+      <Text
+        ref={ref}
+        onPointerOver={over}
+        onPointerOut={out}
+        onClick={() => console.log('clicked:', children)}
+        {...fontProps}
+        {...props}
+      >
+        {children}
+        <meshStandardMaterial color={hovered ? '#60a5fa' : '#ffffff'} />
+      </Text>
+    </Billboard>
+  )
+}
 
-      <div className="max-w-7xl mx-auto relative">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-16"
-        >
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Arsenal</span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl leading-relaxed">
-            A comprehensive stack enabling end-to-end development of scalable applications.
-          </p>
-        </motion.div>
+function Cloud({ count = 4, radius = 20 }) {
+  // Create a spherical distribution of words
+  const words = useMemo(() => {
+    const temp = [];
+    const spherical = new THREE.Spherical();
+    
+    // Distribute skills evenly on sphere (Fibonacci Sphere)
+    const phiSpan = Math.PI * (3 - Math.sqrt(5));
+    
+    // We loop through our skills list relative to the cloud size
+    for (let i = 0; i < allSkills.length; i++) {
+        const y = 1 - (i / (allSkills.length - 1)) * 2; // y goes from 1 to -1
+        const radiusAtY = Math.sqrt(1 - y * y); // Radius at y
+        
+        const theta = phiSpan * i;
+        
+        const x = Math.cos(theta) * radiusAtY;
+        const z = Math.sin(theta) * radiusAtY;
+        
+        // Scale by radius
+        temp.push([new THREE.Vector3(x * radius, y * radius, z * radius), allSkills[i]]);
+    }
+    return temp;
+  }, [radius]);
+  
+  return (
+    <>
+      {words.map(([pos, word], index) => (
+        // @ts-ignore
+        <Word key={index} position={pos}>{word}</Word>
+      ))}
+    </>
+  )
+}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skills.map((group, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-colors"
-            >
-              <h3 className="text-xl font-bold text-blue-300 mb-6 uppercase tracking-wider border-b border-white/10 pb-4">
-                {group.category}
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {group.items.map((skill, sIdx) => (
-                  <span
-                    key={sIdx}
-                    className="px-4 py-2 bg-black/40 rounded-full text-sm text-gray-300 border border-white/10 hover:border-white/30 hover:text-white transition-all cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+import { MotionValue } from "framer-motion";
+
+function Scene({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
+    const group = useRef<THREE.Group>(null);
+    const scrollRef = useRef(0);
+
+    // Sync scroll value to ref for useFrame access without re-render
+    useEffect(() => {
+        const unsubscribe = scrollYProgress.on("change", (v: number) => {
+           scrollRef.current = v; 
+        });
+        return () => unsubscribe();
+    }, [scrollYProgress]);
+    
+    useFrame((state, delta) => {
+        if (group.current) {
+            // Auto rotation (base speed)
+            const baseSpeed = 0.1;
+            
+            // Scroll influence: spin faster when scrolling down
+            // We use the derivative of scroll or just the raw position + time?
+            // "When mousewheel" usually means implied velocity. 
+            // We will just add a multiplier based on scroll position or keep it constant + auto.
+            
+            // Let's make it auto-rotate constant + add scroll rotation
+            group.current.rotation.y += delta * baseSpeed;
+            
+            // Slight bobbing
+            group.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.5) * 0.1;
+        }
+    });
+
+    return (
+        <group ref={group}>
+            <Cloud radius={25} />
+        </group>
+    );
+}
+
+export default function Skills() {
+  const { scrollYProgress } = useScroll();
+
+  return (
+    <section className="relative z-20 bg-black min-h-screen overflow-hidden" id="skills">
+       {/* Section Header - Centered */}
+       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="text-center bg-black/30 backdrop-blur-sm p-8 rounded-full border border-white/5"
+          >
+            <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter mb-2 drop-shadow-2xl">
+               Skills
+            </h2>
+             <p className="text-gray-300 text-sm md:text-lg uppercase tracking-[0.5em] drop-shadow-lg">
+                ( Drag to Rotate )
+             </p>
+          </motion.div>
+       </div>
+
+      <div className="w-full h-screen cursor-grab active:cursor-grabbing">
+        <Canvas camera={{ position: [0, 0, 50], fov: 60 }} gl={{ antialias: true }}>
+          <fog attach="fog" args={['#000000', 40, 80]} />
+          <ambientLight intensity={1} />
+          {/* <pointLight position={[10, 10, 10]} /> */}
+          <Scene scrollYProgress={scrollYProgress} />
+          <TrackballControls noZoom noPan rotateSpeed={2} />
+        </Canvas>
       </div>
     </section>
   );

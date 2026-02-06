@@ -1,38 +1,29 @@
 "use client";
 
-import Link from "next/link";
 import { personalInfo } from "@/lib/data";
+import { ArrowUp } from "lucide-react";
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="w-full py-6 md:py-12 bg-muted/20 border-t border-border/40">
-      <div className="container px-4 md:px-6 mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex flex-col items-center md:items-start gap-2">
-            <span className="text-lg font-bold tracking-tight">
-                {personalInfo.name}
+    <footer className="relative z-20 bg-[#0a0a0a] py-8 px-4 md:px-12 border-t border-white/5">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+         <p className="text-neutral-500 text-sm">
+            © {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
+         </p>
+
+         <button 
+           onClick={scrollToTop}
+           className="flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors group"
+         >
+            Back to Top
+            <span className="p-2 rounded-full bg-white/5 group-hover:bg-white/10 transition-colors">
+               <ArrowUp size={14} />
             </span>
-            <p className="text-sm text-muted-foreground text-center md:text-left">
-                © {new Date().getFullYear()} All rights reserved. Built with Next.js & Tailwind.
-            </p>
-        </div>
-        
-        <div className="flex items-center gap-6">
-            {personalInfo.socials.map((social) => {
-                const Icon = social.icon;
-                return (
-                    <a
-                        key={social.label}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                        aria-label={social.label}
-                    >
-                        <Icon size={20} />
-                    </a>
-                );
-            })}
-        </div>
+         </button>
       </div>
     </footer>
   );
