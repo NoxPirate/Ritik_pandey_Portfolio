@@ -61,10 +61,10 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
 
-  // Webpack configuration (optional)
-  webpack: (config, { isServer }) => {
-    // Add custom webpack config if needed
-    return config;
+  // Turbopack configuration (Next.js 16+)
+  turbopack: {
+    // Empty config to acknowledge Turbopack usage
+    // Add custom Turbopack config here if needed in the future
   },
 };
 
