@@ -36,9 +36,9 @@ export const SplitText = ({ children, className, delay = 0 }: SplitTextProps) =>
       y: 0,
       filter: "blur(0px)",
       transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
+        type: "tween",
+        ease: "easeOut",
+        duration: 0.3,
       },
     },
     hidden: {
