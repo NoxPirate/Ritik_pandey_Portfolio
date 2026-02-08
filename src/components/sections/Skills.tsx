@@ -13,7 +13,7 @@ const allSkills = skills.flatMap(s => s.items);
 function Word({ children, position, ...props }: { children: string; position: THREE.Vector3 } & any) {
   // REMOVED custom font to ensure visibility. Using default font.
   const fontProps = { fontSize: 2.5, letterSpacing: -0.05, lineHeight: 1, 'material-toneMapped': false };
-  const ref = useRef<THREE.Mesh>();
+  const ref = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
   
   const over = (e: any) => { e.stopPropagation(); setHovered(true) };
