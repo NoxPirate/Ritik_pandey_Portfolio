@@ -201,21 +201,15 @@ function LivingSphere({ scrollYProgress }: { scrollYProgress?: MotionValue<numbe
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={particleCount}
-          array={positions}
-          itemSize={3}
+          args={[positions, 3]}
         />
         <bufferAttribute
           attach="attributes-aRandom"
-          count={particleCount}
-          array={randomness}
-          itemSize={1}
+          args={[randomness, 1]}
         />
         <bufferAttribute
           attach="attributes-aSize"
-          count={particleCount}
-          array={sizes}
-          itemSize={1}
+          args={[sizes, 1]}
         />
       </bufferGeometry>
       {/* @ts-ignore */}
