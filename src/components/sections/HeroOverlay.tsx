@@ -43,14 +43,14 @@ export default function HeroOverlay({ scrollYProgress }: { scrollYProgress: Moti
             style={{ opacity: opacity1, y: y1 }}
             className="absolute inset-0 flex flex-col items-center justify-center p-4 pointer-events-none"
         >
-            <div className="text-center z-20 mix-blend-difference">
+            <div className="text-center z-20 mix-blend-difference w-full max-w-[90vw]">
                 <div className="overflow-hidden mb-2">
-                  <SplitText className="text-[12vw] leading-[0.85] font-bold tracking-tighter justify-center select-none">
+                  <SplitText className="text-[12vw] sm:text-[10vw] md:text-[8vw] leading-[0.85] font-bold tracking-tighter justify-center select-none">
                     {personalInfo.name.toUpperCase()}
                   </SplitText>
                 </div>
-                <div className="overflow-hidden flex justify-center">
-                    <SplitText className="text-xl md:text-3xl font-light text-gray-400 tracking-[0.5em] uppercase justify-center" delay={0.6}>
+                <div className="overflow-hidden flex justify-center w-full">
+                    <SplitText className="text-[11px] sm:text-xs md:text-2xl font-light text-gray-400 tracking-[0.15em] sm:tracking-[0.25em] md:tracking-[0.5em] uppercase justify-center" delay={0.6}>
                         {personalInfo.title}
                     </SplitText>
                 </div>
@@ -60,16 +60,16 @@ export default function HeroOverlay({ scrollYProgress }: { scrollYProgress: Moti
         {/* Section 2: Statement - Bold & Left Aligned */}
         <motion.div 
             style={{ opacity: opacity2, y: y2 }}
-            className="absolute inset-0 flex items-center justify-start p-8 md:p-32 pointer-events-none"
+            className="absolute inset-0 flex items-center justify-start p-6 sm:p-12 md:p-32 pointer-events-none"
         >
-            <div className="max-w-6xl z-20 mix-blend-difference text-left">
-               <SplitText className="text-6xl md:text-8xl font-bold leading-none tracking-tighter justify-start">
+            <div className="max-w-6xl z-20 mix-blend-difference text-left w-full">
+               <SplitText className="text-4xl sm:text-6xl md:text-8xl font-bold leading-none tracking-tighter justify-start">
                  INTELLIGENCE
                </SplitText>
-               <SplitText className="text-6xl md:text-8xl font-bold leading-none tracking-tighter text-blue-500 justify-start" delay={0.2}>
-                   ARCHITECT
+               <SplitText className="text-4xl sm:text-6xl md:text-8xl font-bold leading-none tracking-tighter text-blue-500 justify-start" delay={0.2}>
+                    ARCHITECT
                </SplitText>
-               <p className="mt-8 text-xl text-gray-400 max-w-2xl font-light tracking-wide">
+               <p className="mt-4 md:mt-8 text-sm sm:text-base md:text-xl text-gray-400 max-w-2xl font-light tracking-wide">
                    Constructing the digital nervous systems of tomorrow with scalable code and adaptive AI modules.
                </p>
             </div>
@@ -78,27 +78,28 @@ export default function HeroOverlay({ scrollYProgress }: { scrollYProgress: Moti
         {/* Section 3: Value Prop - Right Aligned with Impact */}
         <motion.div 
             style={{ opacity: opacity3, y: y3 }}
-            className="absolute inset-0 flex items-center justify-end p-8 md:p-24 pointer-events-none"
+            className="absolute inset-0 flex items-center justify-end p-6 sm:p-12 md:p-24 pointer-events-none"
         >
-            <div className="max-w-5xl z-20 mix-blend-difference text-right flex flex-col items-end">
-               <div className="flex flex-col items-end">
-                   <SplitText className="text-6xl md:text-9xl font-bold leading-[0.85] tracking-tighter justify-end">
+            <div className="max-w-5xl z-20 mix-blend-difference text-right flex flex-col items-end w-full">
+               <div className="flex flex-col items-end w-full">
+                   <SplitText className="text-4xl sm:text-6xl md:text-9xl font-bold leading-[0.85] tracking-tighter justify-end">
                       FULL STACK
                    </SplitText>
-                   <SplitText className="text-6xl md:text-9xl font-bold leading-[0.85] tracking-tighter text-purple-500 justify-end" delay={0.2}>
+                   <SplitText className="text-4xl sm:text-6xl md:text-9xl font-bold leading-[0.85] tracking-tighter text-purple-500 justify-end" delay={0.2}>
                       MASTERY
                    </SplitText>
                </div>
-               <div className="mt-6 border-t border-purple-500/50 pt-6 w-64">
-                    <p className="text-lg text-gray-300 font-mono">
+               <div className="mt-4 md:mt-6 border-t border-purple-500/50 pt-4 md:pt-6 w-48 sm:w-56 md:w-64">
+                    <p className="text-xs sm:text-sm md:text-lg text-gray-300 font-mono">
                         {">"} Systems designed for scale.
                     </p>
-                    <p className="text-lg text-gray-300 font-mono">
+                    <p className="text-xs sm:text-sm md:text-lg text-gray-300 font-mono">
                         {">"} UI crafted for impact.
                     </p>
                </div>
             </div>
         </motion.div>
+
         
         {/* Scroll Indicator */}
         <motion.div 

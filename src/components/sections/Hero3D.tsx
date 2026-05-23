@@ -1,3 +1,5 @@
+"use client";
+
 import { Canvas, useFrame, useThree, extend } from "@react-three/fiber";
 import { shaderMaterial } from "@react-three/drei";
 import * as THREE from "three";
@@ -225,6 +227,34 @@ function LivingSphere({ scrollYProgress }: { scrollYProgress?: MotionValue<numbe
 }
 
 export default function Hero3D({ scrollYProgress }: { scrollYProgress?: any }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (isMobile) {
+    return (
+      <div className="absolute inset-0 z-0 h-full w-full bg-[#030303] overflow-hidden">
+        {/* Animated premium glowing mesh for mobile */}
+        <div 
+          className="absolute -top-[10%] -left-[10%] w-[80vw] h-[80vw] rounded-full bg-gradient-to-br from-blue-600/10 to-transparent blur-[120px] animate-pulse pointer-events-none" 
+          style={{ animationDuration: "6s" }}
+        />
+        <div 
+          className="absolute -bottom-[10%] -right-[10%] w-[80vw] h-[80vw] rounded-full bg-gradient-to-br from-purple-600/10 to-transparent blur-[120px] animate-pulse pointer-events-none" 
+          style={{ animationDuration: "9s" }}
+        />
+        <div className="absolute inset-0 bg-grid-white opacity-20 pointer-events-none" />
+      </div>
+    );
+  }
+
   return (
     <div className="absolute inset-0 z-0 h-full w-full">
       <Canvas camera={{ position: [0, 0, 6], fov: 60 }} gl={{ antialias: false, alpha: true }}>

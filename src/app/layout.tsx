@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 // Site configuration from environment variables
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ruturaj-nawale.vercel.app';
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Ruturaj Nawale Portfolio';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ritik-pandey.vercel.app';
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Ritik Pandey Portfolio';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -15,20 +15,23 @@ export const metadata: Metadata = {
     default: siteName,
     template: `%s | ${siteName}`,
   },
-  description: "Full-stack developer specializing in AI/ML, cloud architecture, and modern web technologies. Explore my projects, research, and professional journey.",
+  description: "AI/ML Software Engineer & Full-Stack Developer specializing in MLOps, Agentic AI, and scalable cloud solutions. Explore my projects, research, and professional journey.",
   keywords: [
-    "Ruturaj Nawale",
+    "Ritik Pandey",
     "Full Stack Developer",
     "AI/ML Engineer",
+    "MLOps Engineer",
+    "Agentic AI",
+    "Python Developer",
     "React Developer",
     "Next.js",
+    "Salesforce",
     "TypeScript",
-    "Cloud Architecture",
     "Portfolio",
   ],
-  authors: [{ name: "Ruturaj Nawale" }],
-  creator: "Ruturaj Nawale",
-  publisher: "Ruturaj Nawale",
+  authors: [{ name: "Ritik Pandey" }],
+  creator: "Ritik Pandey",
+  publisher: "Ritik Pandey",
   formatDetection: {
     email: false,
     address: false,
@@ -39,21 +42,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     title: siteName,
-    description: "Full-stack developer specializing in AI/ML, cloud architecture, and modern web technologies.",
+    description: "AI/ML Software Engineer & Full-Stack Developer specializing in MLOps, Agentic AI, and scalable cloud solutions.",
     siteName: siteName,
     images: [
       {
         url: `${siteUrl}/hero-portrait.png`,
         width: 1200,
         height: 630,
-        alt: "Ruturaj Nawale - Full Stack Developer",
+        alt: "Ritik Pandey - AI/ML Software Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteName,
-    description: "Full-stack developer specializing in AI/ML, cloud architecture, and modern web technologies.",
+    description: "AI/ML Software Engineer & Full-Stack Developer specializing in MLOps, Agentic AI, and scalable cloud solutions.",
     images: [`${siteUrl}/hero-portrait.png`],
     // Add your Twitter handle when available
     // creator: "@yourtwitterhandle",

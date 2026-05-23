@@ -25,7 +25,7 @@ export default function Contact() {
   }, []);
 
   const handleCopy = () => {
-    const email = personalInfo.socials.find(s => s.label === "Email")?.href.replace("mailto:", "") || "ruturajnawale@gmail.com";
+    const email = personalInfo.socials.find(s => s.label === "Email")?.href.replace("mailto:", "") || "ritiks.987654321@gmail.com";
     navigator.clipboard.writeText(email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -61,8 +61,8 @@ export default function Contact() {
              </span>
           </div>
           
-          <h2 className="text-6xl md:text-9xl font-bold text-white tracking-tighter leading-[0.9]">
-            LET'S WORK <br />
+          <h2 className="text-5xl sm:text-7xl md:text-9xl font-bold text-white tracking-tighter leading-[0.9]">
+            LET&apos;S WORK <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-white">TOGETHER</span>
           </h2>
         </motion.div>
@@ -80,12 +80,12 @@ export default function Contact() {
              onClick={handleCopy}
            >
               <div className="text-neutral-400 text-sm font-mono mb-4 uppercase tracking-wider">Drop me a line</div>
-              <div className="relative inline-flex items-center gap-4">
-                 <h3 className="text-3xl md:text-5xl font-bold text-white group-hover:text-blue-200 transition-colors">
+              <div className="relative inline-flex items-center gap-4 max-w-full">
+                 <h3 className="text-lg sm:text-3xl md:text-5xl font-bold text-white group-hover:text-blue-200 transition-colors truncate">
                     {personalInfo.socials.find(s => s.label === "Email")?.href.replace("mailto:", "") || "email@example.com"}
                  </h3>
-                 <div className="p-3 rounded-full bg-white/10 text-white opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                    {copied ? <span className="text-xs font-bold text-green-400">COPIED!</span> : <Copy size={20} />}
+                 <div className="p-2.5 sm:p-3 rounded-full bg-white/10 text-white opacity-100 md:opacity-0 md:-translate-x-4 md:group-hover:opacity-100 md:group-hover:translate-x-0 transition-all duration-300 flex-shrink-0">
+                    {copied ? <span className="text-xs font-bold text-green-400">COPIED!</span> : <Copy size={18} />}
                  </div>
               </div>
               <div className="h-[1px] w-full bg-white/10 mt-4 group-hover:bg-blue-500/50 transition-colors duration-500" />

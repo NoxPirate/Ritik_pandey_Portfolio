@@ -8,6 +8,7 @@ import Projects from "@/components/sections/Projects";
 import Journey from "@/components/sections/Journey";
 import Contact from "@/components/sections/Contact";
 import Research from "@/components/sections/Research";
+import Testimonials from "@/components/sections/Testimonials";
 import dynamic from "next/dynamic";
 
 // Disable SSR for Skills component because it uses React Three Fiber
@@ -25,6 +26,7 @@ export default function Home() {
       <Projects />
       <Journey />
        <Research /> 
+      <Testimonials />
       {/* <Insights /> */}
       <Contact />
       <Footer />

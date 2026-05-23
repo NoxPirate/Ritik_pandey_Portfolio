@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { personalInfo } from "@/lib/data";
+import { personalInfo, skills } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 // --- Components ---
@@ -35,7 +35,7 @@ const BentoCard = ({
 );
 
 const TechBadge = ({ name }: { name: string }) => (
-  <span className="px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-white/30 transition-colors">
+  <span className="px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-gray-200 hover:text-white hover:border-blue-400 hover:bg-blue-950/20 transition-all">
     {name}
   </span>
 );
@@ -71,15 +71,15 @@ export default function About() {
           <BentoCard className="md:col-span-2 md:row-span-2 p-8" delay={0.1}>
             <div className="flex flex-col justify-between h-full">
                 <div>
-                     <h3 className="text-xl text-gray-400 font-mono mb-6">/ MISSION_LOG</h3>
-                     <p className="text-2xl md:text-3xl font-light leading-relaxed text-gray-200">
+                     <h3 className="text-xl text-blue-400 font-mono mb-6 uppercase tracking-wider">/ MISSION_LOG</h3>
+                     <p className="text-2xl md:text-3xl font-normal leading-relaxed text-zinc-100">
                         {personalInfo.about.p1}
                      </p>
                 </div>
                 <div className="mt-8 pt-8 border-t border-white/10">
-                    <p className="text-lg text-gray-400">
-                      {personalInfo.about.p2}
-                    </p>
+                     <p className="text-lg text-zinc-300 leading-relaxed">
+                       {personalInfo.about.p2}
+                     </p>
                 </div>
             </div>
           </BentoCard>
@@ -87,31 +87,37 @@ export default function About() {
           {/* 2. Stats - Experience */}
           <BentoCard className="md:col-span-1 p-8 flex items-center justify-center text-center" delay={0.2}>
              <div>
-                <h4 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-600">
+                <h4 className="text-6xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-indigo-600">
                     1+
                 </h4>
-                <p className="text-sm font-mono text-gray-400 mt-2 tracking-widest uppercase">Years Exp</p>
+                <p className="text-sm font-mono text-blue-300 mt-2 tracking-widest uppercase font-semibold">Years Exp</p>
              </div>
           </BentoCard>
 
           {/* 3. Stats - Projects */}
           <BentoCard className="md:col-span-1 p-8 flex items-center justify-center text-center" delay={0.3}>
              <div>
-                <h4 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-600">
+                <h4 className="text-6xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-purple-400 to-pink-600">
                     10+
                 </h4>
-                <p className="text-sm font-mono text-gray-400 mt-2 tracking-widest uppercase">Systems Built</p>
+                <p className="text-sm font-mono text-purple-300 mt-2 tracking-widest uppercase font-semibold">Systems Built</p>
              </div>
           </BentoCard>
 
           {/* 4. Tech Stack */}
           <BentoCard className="md:col-span-2 p-8" delay={0.4}>
-              <h3 className="text-xl text-gray-400 font-mono mb-6">/ ACTIVE_MODULES</h3>
-              <div className="flex flex-wrap gap-2">
-                 {["Next.js", "React", "TypeScript", "Node.js", "Python", "AWS", "Docker", "PostgreSQL", "Sqlite", "TailwindCSS", "deep learning", "machine learning", "Gen AI","RAG","Framer Motion"].map(tech => (
-                     <TechBadge key={tech} name={tech} />
+              <h3 className="text-xl text-purple-400 font-mono mb-6 uppercase tracking-wider">/ ACTIVE_MODULES</h3>
+              <div className="space-y-6">
+                 {skills.map((cat, idx) => (
+                    <div key={idx} className="space-y-2">
+                       <h4 className="text-xs uppercase tracking-widest text-zinc-400 font-semibold font-mono">{cat.category}</h4>
+                       <div className="flex flex-wrap gap-2">
+                          {cat.items.map(tech => (
+                              <TechBadge key={tech} name={tech} />
+                          ))}
+                       </div>
+                    </div>
                  ))}
-                 <TechBadge name="...and more" />
               </div>
           </BentoCard>
 
@@ -119,11 +125,11 @@ export default function About() {
           <BentoCard className="md:col-span-2 p-8" delay={0.5}>
               <div className="flex flex-col md:flex-row items-center gap-8 h-full">
                  <div className="md:w-1/3">
-                    <h3 className="text-xl text-gray-400 font-mono">/ CORE_PHILOSOPHY</h3>
+                    <h3 className="text-xl text-blue-400 font-mono uppercase tracking-wider">/ CORE_PHILOSOPHY</h3>
                  </div>
                  <div className="md:w-2/3 border-l-2 border-blue-500 pl-6">
-                    <blockquote className="text-xl italic text-gray-300">
-                       &quot;Code is not just functionality; it's the architecture of intelligence.&quot;
+                    <blockquote className="text-xl italic text-zinc-100 font-medium">
+                       &quot;Code is not just functionality; it&apos;s the architecture of intelligence.&quot;
                     </blockquote>
                  </div>
               </div>

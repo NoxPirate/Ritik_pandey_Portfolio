@@ -81,7 +81,7 @@ function TimelineItem({ item, index }: { item: any; index: number }) {
       <div className="hidden md:block w-1/2" />
 
       {/* Neural Node (Center Point) */}
-      <div className="absolute left-[20px] md:left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center z-10">
+      <div className="absolute left-[28px] md:left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center z-10">
          <motion.div 
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
@@ -123,11 +123,11 @@ function TimelineItem({ item, index }: { item: any; index: number }) {
                {item.title}
              </h3>
              
-             <p className="text-purple-300 font-medium tracking-wide mb-4 text-sm uppercase">
+             <p className="text-purple-400 font-semibold tracking-widest mb-4 text-xs uppercase font-mono">
                {item.company}
              </p>
              
-             <p className="text-gray-400 leading-relaxed text-sm md:text-base text-left">
+             <p className={cn("text-zinc-300 leading-relaxed text-sm md:text-base", isEven ? "md:text-right text-left" : "text-left")}>
                {item.description}
              </p>
           </motion.div>

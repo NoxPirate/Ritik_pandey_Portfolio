@@ -58,7 +58,7 @@ export default function Navbar() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            RN.
+            RP.
           </Link>
 
           {/* Desktop Navigation */}
@@ -82,7 +82,7 @@ export default function Navbar() {
                onClick={(e) => handleScrollToSection(e, "#contact")}
                className="px-5 py-2 text-sm font-medium text-black bg-white rounded-full hover:bg-gray-200 transition-colors"
              >
-               Let's Talk
+               Let&apos;s Talk
              </a>
           </div>
 
@@ -122,7 +122,7 @@ export default function Navbar() {
                   onClick={(e) => handleScrollToSection(e, "#contact")}
                   className="text-lg font-medium text-blue-400 hover:text-blue-300 transition-colors pt-4 border-t border-white/10"
                 >
-                  Let's Talk
+                  Let&apos;s Talk
                 </a>
             </div>
           </motion.div>
