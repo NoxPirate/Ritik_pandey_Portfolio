@@ -1,4 +1,4 @@
-# 🖥️ Ruturaj Nawale's Portfolio
+# 🖥️ Ritik Pandey Portfolio
 
 Welcome to my portfolio! 🌟 Here, you'll find a showcase of my skills, projects, and experiences.
 
