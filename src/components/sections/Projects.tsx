@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { projects } from "@/lib/data";
 import { Github, ExternalLink, ArrowUpRight } from "lucide-react";
@@ -181,23 +181,12 @@ const ProjectsMobile = () => {
 };
 
 export default function Projects() {
-  const targetRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const scrollRangeRef = useRef(0);
   const [isMobile, setIsMobile] = useState(true);
   const [mounted, setMounted] = useState(false);
-
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start start", "end end"],
-  });
-
-  // Function-form useTransform: called every frame, always reads the latest ref value.
-  // This avoids the bug where array-form useTransform caches [0, -0] on initial render
-  // and never re-maps when scrollRange state updates.
-  const x = useTransform(scrollYProgress, (progress) => {
-    return -progress * scrollRangeRef.current;
-  });
+  const [translateX, setTranslateX] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     setMounted(true);
@@ -209,24 +198,54 @@ export default function Projects() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Measure the exact scrollable pixel range after layout paint
   useEffect(() => {
     if (isMobile || !mounted) return;
 
-    const calculateRange = () => {
-      if (!containerRef.current) return;
-      const containerWidth = containerRef.current.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      scrollRangeRef.current = Math.max(0, containerWidth - viewportWidth);
+    let rafId: number;
+
+    const handleScroll = () => {
+      rafId = requestAnimationFrame(() => {
+        const section = sectionRef.current;
+        const container = containerRef.current;
+        if (!section || !container) return;
+
+        const rect = section.getBoundingClientRect();
+        const sectionHeight = section.offsetHeight;
+        const viewportHeight = window.innerHeight;
+
+        // How far we've scrolled INTO this section
+        // rect.top starts positive (below viewport), goes to 0 (at top), goes negative (scrolled past)
+        // When sticky is active: rect.top <= 0 and rect.bottom >= viewportHeight
+        const scrollDistance = sectionHeight - viewportHeight; // total scrollable distance within section
+        const scrolled = -rect.top; // how many px we've scrolled past the section top
+
+        // Clamp progress between 0 and 1
+        const rawProgress = scrolled / scrollDistance;
+        const clampedProgress = Math.max(0, Math.min(1, rawProgress));
+
+        // Calculate the horizontal distance to translate
+        const containerWidth = container.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        const maxTranslate = containerWidth - viewportWidth;
+
+        setTranslateX(-clampedProgress * maxTranslate);
+        setProgress(clampedProgress);
+      });
     };
 
-    // Initial measurement after a short paint-settle delay
-    const timer = setTimeout(calculateRange, 100);
+    // Run once after paint settles
+    const timer = setTimeout(() => {
+      handleScroll();
+    }, 200);
 
-    window.addEventListener("resize", calculateRange);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+
     return () => {
       clearTimeout(timer);
-      window.removeEventListener("resize", calculateRange);
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, [isMobile, mounted]);
 
@@ -245,7 +264,7 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" ref={targetRef} className="relative h-[500vh] bg-black">
+    <section id="projects" ref={sectionRef} className="relative bg-black" style={{ height: `${(projects.length + 1) * 100}vh` }}>
       
       {/* Sticky Viewport */}
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
@@ -258,18 +277,28 @@ export default function Projects() {
             <div className="h-1 w-24 bg-blue-500 mt-4" />
         </div>
 
-        {/* Horizontal Container */}
-        <motion.div ref={containerRef} style={{ x }} className="flex gap-8 md:gap-16 pl-[5vw] md:pl-[20vw] pr-[20vw]">
+        {/* Horizontal Container - using direct style transform instead of Framer Motion */}
+        <div 
+          ref={containerRef} 
+          className="flex gap-8 md:gap-16 pl-[5vw] md:pl-[20vw] pr-[20vw]"
+          style={{ 
+            transform: `translate3d(${translateX}px, 0, 0)`,
+            willChange: 'transform',
+          }}
+        >
           {projects.map((project, i) => (
             <ProjectCard key={i} project={project} index={i} />
           ))}
-        </motion.div>
+        </div>
         
         {/* Scroll Progress Indicator (Bottom) */}
         <div className="absolute bottom-10 left-10 right-10 h-1 bg-white/10 rounded-full overflow-hidden">
-            <motion.div 
-                style={{ scaleX: scrollYProgress, transformOrigin: "0%" }} 
-                className="h-full bg-blue-500" 
+            <div 
+                style={{ 
+                  transform: `scaleX(${progress})`, 
+                  transformOrigin: "0%",
+                }} 
+                className="h-full bg-blue-500 transition-none" 
             />
         </div>
 
