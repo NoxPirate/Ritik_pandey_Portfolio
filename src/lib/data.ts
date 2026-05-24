@@ -64,7 +64,7 @@ export const projects = [
             github: "https://github.com/NoxPirate/gsbgProject",
             demo: "https://github.com/NoxPirate/gsbgProject",
         },
-        image: "/agentic_lead_gen.png",
+        image: "/Ritik_pandey_Portfolio/agentic_lead_gen.png",
     },
     {
         title: "MiniCRM",
@@ -74,7 +74,7 @@ export const projects = [
             github: "https://github.com/NoxPirate/MiniCRM",
             demo: "https://github.com/NoxPirate/MiniCRM",
         },
-        image: "/gsbg_project.png",
+        image: "/Ritik_pandey_Portfolio/gsbg_project.png",
     },
     {
         title: "Android Text Encryption App",
@@ -84,7 +84,7 @@ export const projects = [
             github: "https://github.com/NoxPirate/Android-text-encryption-app",
             demo: "https://github.com/NoxPirate/Android-text-encryption-app",
         },
-        image: "/android_encryption.png",
+        image: "/Ritik_pandey_Portfolio/android_encryption.png",
     },
     {
         title: "Dental Clinic Management Ecosystem",
@@ -94,7 +94,7 @@ export const projects = [
             github: "https://github.com/NoxPirate/dentistFrontend",
             demo: "https://github.com/NoxPirate/dentistAPI",
         },
-        image: "/dentist_ecosystem.png",
+        image: "/Ritik_pandey_Portfolio/dentist_ecosystem.png",
     },
     {
         title: "Automated Library Management System",
@@ -104,7 +104,7 @@ export const projects = [
             github: "https://github.com/NoxPirate/library-management-system",
             demo: "https://github.com/NoxPirate/library-management-system",
         },
-        image: "/library_management.png",
+        image: "/Ritik_pandey_Portfolio/library_management.png",
     },
     {
         title: "HackFlash Cybersecurity Toolkit",
@@ -114,7 +114,7 @@ export const projects = [
             github: "https://github.com/NoxPirate/hackflash",
             demo: "https://github.com/NoxPirate/hackflash",
         },
-        image: "/hackflash_security.png",
+        image: "/Ritik_pandey_Portfolio/hackflash_security.png",
     },
     {
         title: "ITVaDesk Support Portal",
@@ -124,7 +124,7 @@ export const projects = [
             github: "https://github.com/NoxPirate/itvadesk",
             demo: "https://github.com/NoxPirate/itvadesk",
         },
-        image: "/itvadesk_support.png",
+        image: "/Ritik_pandey_Portfolio/itvadesk_support.png",
     },
     {
         title: "Stock Prediction & Recommendation",
@@ -134,7 +134,7 @@ export const projects = [
             github: "https://github.com/NoxPirate/stock-prediction-app",
             demo: "https://github.com/NoxPirate/stock-prediction-app",
         },
-        image: "/stock_predictor.png",
+        image: "/Ritik_pandey_Portfolio/stock_predictor.png",
     },
     {
         title: "JARVIS Desktop Assistant",
@@ -144,7 +144,7 @@ export const projects = [
             github: "https://github.com/NoxPirate/jarvis-automation-",
             demo: "https://github.com/NoxPirate/jarvis-automation-",
         },
-        image: "/jarvis_assistant.png",
+        image: "/Ritik_pandey_Portfolio/jarvis_assistant.png",
     },
     {
         title: "Movie Recommendation System",
@@ -154,7 +154,7 @@ export const projects = [
             github: "https://github.com/NoxPirate",
             demo: "https://github.com/NoxPirate",
         },
-        image: "/movie_recommender.png",
+        image: "/Ritik_pandey_Portfolio/movie_recommender.png",
     },
     {
         title: "Campus (Social Media App)",
@@ -164,7 +164,7 @@ export const projects = [
             github: "https://github.com/NoxPirate",
             demo: "https://github.com/NoxPirate",
         },
-        image: "/campus_social.png",
+        image: "/Ritik_pandey_Portfolio/campus_social.png",
     },
 ];
 
@@ -214,14 +214,14 @@ export const insights = [
         date: "Oct 12, 2025",
         readTime: "5 min read",
         link: "#",
-        image: "/images/blog-ai-health.png",
+        image: "/Ritik_pandey_Portfolio/images/blog-ai-health.png",
     },
     {
         title: "Building Scalable MLOps Pipelines",
         date: "Sep 28, 2025",
         readTime: "4 min read",
         link: "#",
-        image: "/images/blog-nextjs.png",
+        image: "/Ritik_pandey_Portfolio/images/blog-nextjs.png",
     },
 ];
 

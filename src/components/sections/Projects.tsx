@@ -187,11 +187,12 @@ export default function Projects() {
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
+    offset: ["start start", "end end"],
   });
 
   // Calculate the horizontal translation
-  // Moves from 1% (start) to -85% (end of list) as we scroll down the targetRef height
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-85%"]);
+  // Moves from 0% (start) to -80% (end of list) as we scroll down the targetRef height
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
 
   useEffect(() => {
     setMounted(true);
