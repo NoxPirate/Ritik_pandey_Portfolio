@@ -183,17 +183,21 @@ const ProjectsMobile = () => {
 export default function Projects() {
   const targetRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollRangeRef = useRef(0);
   const [isMobile, setIsMobile] = useState(true);
   const [mounted, setMounted] = useState(false);
-  const [scrollRange, setScrollRange] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"],
   });
 
-  // Calculate horizontal translation strictly based on actual pixel scrollable width
-  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollRange]);
+  // Function-form useTransform: called every frame, always reads the latest ref value.
+  // This avoids the bug where array-form useTransform caches [0, -0] on initial render
+  // and never re-maps when scrollRange state updates.
+  const x = useTransform(scrollYProgress, (progress) => {
+    return -progress * scrollRangeRef.current;
+  });
 
   useEffect(() => {
     setMounted(true);
@@ -205,25 +209,25 @@ export default function Projects() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Calculate the exact scrollable pixel range after layout paint settles
+  // Measure the exact scrollable pixel range after layout paint
   useEffect(() => {
     if (isMobile || !mounted) return;
 
-    const timer = setTimeout(() => {
-      const calculateRange = () => {
-        if (!containerRef.current) return;
-        const containerWidth = containerRef.current.scrollWidth;
-        const viewportWidth = window.innerWidth;
-        // Exact delta to slide right edge of container flush with right edge of viewport
-        setScrollRange(Math.max(0, containerWidth - viewportWidth));
-      };
+    const calculateRange = () => {
+      if (!containerRef.current) return;
+      const containerWidth = containerRef.current.scrollWidth;
+      const viewportWidth = window.innerWidth;
+      scrollRangeRef.current = Math.max(0, containerWidth - viewportWidth);
+    };
 
-      calculateRange();
-      window.addEventListener("resize", calculateRange);
-      return () => window.removeEventListener("resize", calculateRange);
-    }, 150); // Generous delay to ensure Next.js finishes DOM painting
+    // Initial measurement after a short paint-settle delay
+    const timer = setTimeout(calculateRange, 100);
 
-    return () => clearTimeout(timer);
+    window.addEventListener("resize", calculateRange);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", calculateRange);
+    };
   }, [isMobile, mounted]);
 
   if (!mounted) {
@@ -241,7 +245,7 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" ref={targetRef} className="relative h-[400vh] bg-black">
+    <section id="projects" ref={targetRef} className="relative h-[500vh] bg-black">
       
       {/* Sticky Viewport */}
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
