@@ -182,17 +182,18 @@ const ProjectsMobile = () => {
 
 export default function Projects() {
   const targetRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const [scrollRange, setScrollRange] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"],
   });
 
-  // Calculate the horizontal translation
-  // Moves from 0% (start) to -80% (end of list) as we scroll down the targetRef height
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+  // Calculate horizontal translation strictly based on actual pixel scrollable width
+  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollRange]);
 
   useEffect(() => {
     setMounted(true);
@@ -203,6 +204,27 @@ export default function Projects() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Calculate the exact scrollable pixel range after layout paint settles
+  useEffect(() => {
+    if (isMobile || !mounted) return;
+
+    const timer = setTimeout(() => {
+      const calculateRange = () => {
+        if (!containerRef.current) return;
+        const containerWidth = containerRef.current.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        // Exact delta to slide right edge of container flush with right edge of viewport
+        setScrollRange(Math.max(0, containerWidth - viewportWidth));
+      };
+
+      calculateRange();
+      window.addEventListener("resize", calculateRange);
+      return () => window.removeEventListener("resize", calculateRange);
+    }, 150); // Generous delay to ensure Next.js finishes DOM painting
+
+    return () => clearTimeout(timer);
+  }, [isMobile, mounted]);
 
   if (!mounted) {
     return (
@@ -233,7 +255,7 @@ export default function Projects() {
         </div>
 
         {/* Horizontal Container */}
-        <motion.div style={{ x }} className="flex gap-8 md:gap-16 pl-[5vw] md:pl-[20vw] pr-[20vw]">
+        <motion.div ref={containerRef} style={{ x }} className="flex gap-8 md:gap-16 pl-[5vw] md:pl-[20vw] pr-[20vw]">
           {projects.map((project, i) => (
             <ProjectCard key={i} project={project} index={i} />
           ))}
